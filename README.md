@@ -2,17 +2,17 @@
 
 Domain: https://akademia17-employee-helper.herokuapp.com/api/v1
 
-##Actions:
-###Unauthenticated:
+## Actions:
+### Unauthenticated:
 	1. Register:
 		- endpoint: /auth/register
 		- method: POST
 		- params: username, password
 	2. Login:
-		- endpoint: /auth/register
+		- endpoint: /auth/login
 		- method: POST
-		- params: username, password
-###Authenticated:
+		- params: username, password, api_key
+### Authenticated:
 	1. Generate new employee id
 		- endpoint: /employee/:id
 		- method: GET
@@ -20,7 +20,7 @@ Domain: https://akademia17-employee-helper.herokuapp.com/api/v1
 		- endpoint: /code
 		- method: GET
 
-##Authentication:
+## Authentication:
 	1. Header: Authorization: Bearer <token>
 	2. Request body: token: <token>
 	3. Query string: <domain>/<endpoint>?token=<token>
