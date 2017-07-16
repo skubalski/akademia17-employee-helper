@@ -1,0 +1,19 @@
+{
+  "name": "akademia17-employee-helper",
+  "description": "",
+  "keywords": [],
+  "website": "",
+  "image": "heroku/node",
+  "repository": "https://github.com/skubalski/akademia17-employee-helper",
+  "buildpacks": [
+    {
+      "url": "heroku/node"
+    }
+  ],
+  "env": {
+    "AUTHENTICATION_SECRET": {
+      "description": "A secret key for authentication",
+      "generator": "secret"
+    }
+  }
+}
