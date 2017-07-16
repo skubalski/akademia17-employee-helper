@@ -38,7 +38,7 @@ END;
 $$ LANGUAGE plpgsql;
 
 
-CREATE OR REPLACE FUNCTION a17.validate_user(login VARCHAR(80), password VARCHAR(70))
+CREATE OR REPLACE FUNCTION a17.validate_user(login VARCHAR(80), password VARCHAR(70), api_key TEXT)
   RETURNS a17.USER_DETAILS AS $$
 SELECT
   u.id,
@@ -46,5 +46,5 @@ SELECT
   u.api_key,
   (u.password_hash = crypt(password, u.password_salt)) AS is_password_valid
 FROM a17.user AS u
-WHERE u.username = login;
+WHERE u.username = login AND u.api_key = api_key;
 $$ LANGUAGE SQL;

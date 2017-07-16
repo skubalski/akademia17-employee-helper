@@ -10,7 +10,7 @@ const {BaseRouter} = require('./base-router');
 const {InvalidCredentialsError, ServerError, BadRequestError} = require('../utilities/error-factory');
 const {AuthenticationToken} = require('../utilities/authentication-token');
 
-const VALIDATE_USER = 'SELECT * FROM a17.validate_user($[username], $[password]);';
+const VALIDATE_USER = 'SELECT * FROM a17.validate_user($[username], $[password], $[apiKey]);';
 const CREATE_USER = 'SELECT a17.create_new_user($[username], $[password]) AS api_key;';
 
 class UnauthenticatedRouter extends BaseRouter {
@@ -35,7 +35,8 @@ class UnauthenticatedRouter extends BaseRouter {
             const user = await this._pgDb.task(async conn => {
                 return await conn.oneOrNone(VALIDATE_USER, {
                     username: req.body.username,
-                    password: req.body.password
+                    password: req.body.password,
+                    apiKey: req.body.api_key
                 });
             });
             if (user && user.is_password_valid) {
