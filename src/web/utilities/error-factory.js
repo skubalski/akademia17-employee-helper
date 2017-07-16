@@ -59,7 +59,7 @@ class InvalidAuthorizationToken extends BaseError {
 class InvalidCredentialsError extends BaseError {
     constructor() {
         super();
-        this._message = 'Invalid email or password';
+        this._message = 'Invalid email, password or api key.';
         this._status = 401;
     }
 }
