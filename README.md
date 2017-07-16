@@ -11,7 +11,7 @@ Domain: https://akademia17-employee-helper.herokuapp.com/api/v1
 	2. Login:
 		- endpoint: /auth/login
 		- method: POST
-		- params: username, password
+		- params: username, password, api_key
 ### Authenticated:
 	1. Generate new employee id
 		- endpoint: /employee/:id
